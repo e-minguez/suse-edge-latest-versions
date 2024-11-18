@@ -1,0 +1,1 @@
+# suse-edge-latest-versions
