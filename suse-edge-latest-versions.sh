@@ -54,7 +54,7 @@ LONGHORN_CHARTS_INDEX=$(curl -s https://charts.longhorn.io/index.yaml)
 LONGHORN_UPSTREAM_APP=$(echo "${LONGHORN_CHARTS_INDEX}" | yq '.entries.longhorn[0].appVersion')
 LONGHORN_UPSTREAM_CHART=$(echo "${LONGHORN_CHARTS_INDEX}" | yq '.entries.longhorn[0].version')
 LONGHORN_UPSTREAM_KUBE_REQUIRED=$(echo "${LONGHORN_CHARTS_INDEX}" | yq '.entries.longhorn[0].kubeVersion')
-LONGHORN_UPSTREAM_IMAGES=$(curl -L -s https://github.com/longhorn/longhorn/releases/download/"${LONGHORN_CHARTS_INDEX}"/longhorn-images.txt)
+LONGHORN_UPSTREAM_IMAGES=$(curl -L -s https://github.com/longhorn/longhorn/releases/download/"${LONGHORN_UPSTREAM_APP}"/longhorn-images.txt)
 
 # Longhorn-rancher
 LONGHORN_RANCHER_APP=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.longhorn[0].appVersion')
