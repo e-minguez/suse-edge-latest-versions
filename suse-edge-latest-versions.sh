@@ -91,7 +91,7 @@ TURTLES_UPSTREAM_IMAGES=$(helm template $(echo "${TURTLES_CHARTS_INDEX}" | yq '.
 ELEMENTAL_UPSTREAM_CHART=$(crane ls registry.suse.com/rancher/elemental-operator-chart -O | grep -v latest | tail -n1)
 ELEMENTALCRD_UPSTREAM_CHART=$(crane ls registry.suse.com/rancher/elemental-operator-crds-chart -O | grep -v latest | tail -n1)
 ELEMENTAL_UPSTREAM_IMAGES=$(helm template elemental-operator oci://registry.suse.com/rancher/elemental-operator-chart --version="${ELEMENTAL_UPSTREAM_CHART}" | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' | sort | uniq)
-ELEMENTALCRD_UPSTREAM_IMAGES=$(helm template elemental-operator-crds oci:/registry.suse.com/rancher/elemental-operator-crds-chart --version="${ELEMENTALCRD_UPSTREAM_CHART}" | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' | sort | uniq)
+ELEMENTALCRD_UPSTREAM_IMAGES=$(helm template elemental-operator-crds oci://registry.suse.com/rancher/elemental-operator-crds-chart --version="${ELEMENTALCRD_UPSTREAM_CHART}" | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' | sort | uniq)
 
 # Elemental-rancher
 ELEMENTAL_RANCHER_APP=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.elemental[0].appVersion')
