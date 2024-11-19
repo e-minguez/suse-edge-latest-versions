@@ -1,9 +1,12 @@
 name: Generate HTML Table and Publish to GitHub Pages
 
 on:
+  push:
+    branches:
+      - main
   schedule:
-    # Runs every 4 hours
     - cron: "0 */4 * * *"
+  workflow_dispatch:
 
 jobs:
   generate-html-table:
