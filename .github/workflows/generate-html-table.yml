@@ -16,8 +16,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Install jq
-      run: sudo apt-get install -y jq
+    - name: 'Setup crane'
+      uses: imjasonh/setup-crane@v0.1
+
+    - name: 'Setup jq'
+      uses: dcarbone/install-jq-action@v3
 
     - name: Run HTML table generation script
       run: ./generate-html-table.sh
