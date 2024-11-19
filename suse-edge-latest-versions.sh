@@ -7,7 +7,7 @@ initial_vars=$(compgen -v)
 RKE2=$(curl --silent "https://api.github.com/repos/rancher/rke2/releases/latest" | jq -r .tag_name)
 K3S=$(curl --silent "https://api.github.com/repos/k3s-io/k3s/releases/latest" | jq -r .tag_name)
 # NMCONFIGURATOR
-NM=$(curl --silent "https://api.github.com/repos/suse-edge/nm-configurator/releases/latest" | jq -r .tag_name)
+NM_CONFIGURATOR=$(curl --silent "https://api.github.com/repos/suse-edge/nm-configurator/releases/latest" | jq -r .tag_name)
 TURTLES=$(curl --silent "https://api.github.com/repos/rancher/turtles/releases/latest" | jq -r .tag_name)
 ELEMENTAL=$(curl --silent "https://api.github.com/repos/rancher/elemental/releases/latest" | jq -r .tag_name)
 
