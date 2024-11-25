@@ -101,6 +101,28 @@ ELEMENTALCRD_RANCHER_CHART=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.eleme
 ELEMENTAL_RANCHER_IMAGES=$(helm template http://charts.rancher.io/$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.elemental[0].urls[0]') | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' | sort | uniq)
 ELEMENTALCRD_RANCHER_IMAGES=$(helm template http://charts.rancher.io/$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.elemental-crd[0].urls[0]') | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' | sort | uniq)
 
+# K3S versions
+K3S_DETAILS=$(curl -s https://eduardominguez.es/k3s-versions/k3s.json)
+for details in $(echo "${K3S_DETAILS}" | jq -r '.["k3s-versions"][] | "\(.name)@\(.version)"'); do
+  k3sname=$(echo "${details}" | cut -d"@" -f1 | tr -dc '[:alnum:]'| tr '[:lower:]' '[:upper:]')
+  k3sversion=$(echo "${details}" | cut -d"@" -f2)
+  declare K3S_$k3sname=${k3sversion}
+done
+unset k3sname
+unset k3sversion
+unset details
+
+# RKE2 versions
+RKE2_DETAILS=$(curl -s https://eduardominguez.es/rke2-versions/rke2.json)
+for details in $(echo "${RKE2_DETAILS}" | jq -r '.["rke2-versions"][] | "\(.name)@\(.version)"'); do
+  rke2name=$(echo "${details}" | cut -d"@" -f1 | tr -dc '[:alnum:]'| tr '[:lower:]' '[:upper:]')
+  rke2version=$(echo "${details}" | cut -d"@" -f2)
+  declare RKE2_$rke2name=${rke2version}
+done
+unset rke2name
+unset rke2version
+unset details
+
 # Those are not needed
 unset RANCHER_PRIME_INDEX
 unset RANCHER_STABLE_INDEX
@@ -110,6 +132,8 @@ unset RANCHER_CHARTS_INDEX
 unset LONGHORN_CHARTS_INDEX
 unset NEUVECTOR_CHARTS_INDEX
 unset TURTLES_CHARTS_INDEX
+unset K3S_DETAILS
+unset RKE2_DETAILS
 
 # Get a list of all variables after defining local ones
 end_vars=$(compgen -v)
