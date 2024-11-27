@@ -23,3 +23,6 @@ html_output+="</tbody></table>"
 
 # Save the HTML output
 echo "$html_output" > "$output_file"
+
+# Save the JSON output as well
+echo "$json_output" > output.json
