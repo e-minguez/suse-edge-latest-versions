@@ -44,6 +44,7 @@ jobs:
       run: |
         mkdir public/
         mv output.html public/index.html
+        mv output.json public/output.json
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v4
