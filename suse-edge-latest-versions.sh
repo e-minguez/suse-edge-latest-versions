@@ -60,8 +60,8 @@ LONGHORN_UPSTREAM_IMAGES=$(curl -L -s https://github.com/longhorn/longhorn/relea
 LONGHORN_RANCHER_APP=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.longhorn[0].appVersion')
 LONGHORN_RANCHER_CHART=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.longhorn[0].version')
 LONGHORN_RANCHER_KUBE_REQUIRED=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.longhorn[0].kubeVersion')
-LONGHORN_CRD_RANCHER_APP=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.longhorn-crd[0].appVersion')
-LONGHORN_CRD_RANCHER_CHART=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.longhorn-crd[0].version')
+LONGHORN_CRD_RANCHER_APP=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries."longhorn-crd"[0].appVersion')
+LONGHORN_CRD_RANCHER_CHART=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries."longhorn-crd"[0].version')
 LONGHORN_RANCHER_IMAGES=$(helm template http://charts.rancher.io/$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.longhorn[0].urls[0]') | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' | sort | uniq)
 
 # Neuvector upstream
@@ -76,16 +76,16 @@ NEUVECTOR_UPSTREAM_IMAGES=$(helm template $(echo "${NEUVECTOR_CHARTS_INDEX}" | y
 NEUVECTOR_RANCHER_APP=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.neuvector[0].appVersion')
 NEUVECTOR_RANCHER_CHART=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.neuvector[0].version')
 NEUVECTOR_RANCHER_KUBE_REQUIRED=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.neuvector[0].kubeVersion')
-NEUVECTORCRD_RANCHER_APP=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.neuvector-crd[0].appVersion')
-NEUVECTORCRD_RANCHER_CHART=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.neuvector-crd[0].version')
+NEUVECTORCRD_RANCHER_APP=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries."neuvector-crd"[0].appVersion')
+NEUVECTORCRD_RANCHER_CHART=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries."neuvector-crd"[0].version')
 NEUVECTOR_RANCHER_IMAGES=$(helm template http://charts.rancher.io/$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.neuvector[0].urls[0]') | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' | sort | uniq)
 
 # Rancher turtles
 TURTLES_CHARTS_INDEX=$(curl -s https://rancher.github.io/turtles/index.yaml)
-TURTLES_UPSTREAM_APP=$(echo "${TURTLES_CHARTS_INDEX}" | yq '.entries.rancher-turtles[0].appVersion')
-TURTLES_UPSTREAM_CHART=$(echo "${TURTLES_CHARTS_INDEX}" | yq '.entries.rancher-turtles[0].version')
-TURLTES_UPSTREAM_KUBE_REQUIRED=$(echo "${TURTLES_CHARTS_INDEX}" | yq '.entries.rancher-turtles[0].kubeVersion')
-TURTLES_UPSTREAM_IMAGES=$(helm template $(echo "${TURTLES_CHARTS_INDEX}" | yq '.entries.rancher-turtles[0].urls[0]') | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' | sort | uniq)
+TURTLES_UPSTREAM_APP=$(echo "${TURTLES_CHARTS_INDEX}" | yq '.entries."rancher-turtles"[0].appVersion')
+TURTLES_UPSTREAM_CHART=$(echo "${TURTLES_CHARTS_INDEX}" | yq '.entries."rancher-turtles"[0].version')
+TURTLES_UPSTREAM_KUBE_REQUIRED=$(echo "${TURTLES_CHARTS_INDEX}" | yq '.entries."rancher-turtles"[0].kubeVersion')
+TURTLES_UPSTREAM_IMAGES=$(helm template $(echo "${TURTLES_CHARTS_INDEX}" | yq '.entries."rancher-turtles"[0].urls[0]') | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' | sort | uniq)
 
 # Elemental upstream using OCI
 ELEMENTAL_UPSTREAM_CHART=$(crane ls registry.suse.com/rancher/elemental-operator-chart -O | grep -v latest | tail -n1)
@@ -96,10 +96,10 @@ ELEMENTALCRD_UPSTREAM_IMAGES=$(helm template elemental-operator-crds oci://regis
 # Elemental-rancher
 ELEMENTAL_RANCHER_APP=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.elemental[0].appVersion')
 ELEMENTAL_RANCHER_CHART=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.elemental[0].version')
-ELEMENTALCRD_RANCHER_APP=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.elemental-crd[0].appVersion')
-ELEMENTALCRD_RANCHER_CHART=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.elemental-crd[0].version')
+ELEMENTALCRD_RANCHER_APP=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries."elemental-crd"[0].appVersion')
+ELEMENTALCRD_RANCHER_CHART=$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries."elemental-crd"[0].version')
 ELEMENTAL_RANCHER_IMAGES=$(helm template http://charts.rancher.io/$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.elemental[0].urls[0]') | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' | sort | uniq)
-ELEMENTALCRD_RANCHER_IMAGES=$(helm template http://charts.rancher.io/$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries.elemental-crd[0].urls[0]') | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' | sort | uniq)
+ELEMENTALCRD_RANCHER_IMAGES=$(helm template http://charts.rancher.io/$(echo "${RANCHER_CHARTS_INDEX}" | yq '.entries."elemental-crd"[0].urls[0]') | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' | sort | uniq)
 
 # K3S versions
 K3S_DETAILS=$(curl -s https://eduardominguez.es/k3s-versions/k3s.json)
