@@ -227,11 +227,11 @@
         </div>
     </header>
     <main>
-    {% for group_name in group_order %}
-        {% set items = grouped_data.get(group_name, {}) %}
-        {% if items %}
+
+
+
         <details open>
-            <summary>{{ group_name }}</summary>
+            <summary>Rancher</summary>
             <div class="content">
                 <table>
                     <thead>
@@ -241,18 +241,260 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% for key in items|sort %}
+
                         <tr>
-                            <td>{{ key }}</td>
-                            <td><div class="value-cell">{{ items[key] }}</div></td>
+                            <td>RANCHER</td>
+                            <td><div class="value-cell">v2.13.1</div></td>
                         </tr>
-                    {% endfor %}
+
+                        <tr>
+                            <td>RANCHER_PRIME_APP</td>
+                            <td><div class="value-cell">v2.13.1</div></td>
+                        </tr>
+
                     </tbody>
                 </table>
             </div>
         </details>
-        {% endif %}
-    {% endfor %}
+
+
+
+
+        <details open>
+            <summary>SLE Micro</summary>
+            <div class="content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>SLMICRO</td>
+                            <td><div class="value-cell">6.2</div></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+
+
+
+        <details open>
+            <summary>K3s</summary>
+            <div class="content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>K3S</td>
+                            <td><div class="value-cell">v1.35.0+k3s1</div></td>
+                        </tr>
+
+                        <tr>
+                            <td>K3S_LATEST</td>
+                            <td><div class="value-cell">v1.35.0+k3s1</div></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+
+
+
+        <details open>
+            <summary>RKE2</summary>
+            <div class="content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>RKE2</td>
+                            <td><div class="value-cell">v1.35.0+rke2r1</div></td>
+                        </tr>
+
+                        <tr>
+                            <td>RKE2_STABLE</td>
+                            <td><div class="value-cell">v1.34.3+rke2r1</div></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+
+
+
+        <details open>
+            <summary>Longhorn</summary>
+            <div class="content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>LONGHORN</td>
+                            <td><div class="value-cell">v1.10.1</div></td>
+                        </tr>
+
+                        <tr>
+                            <td>LONGHORN_UPSTREAM_IMAGES</td>
+                            <td><div class="value-cell">longhornio/longhorn-manager:v1.10.1
+longhornio/longhorn-ui:v1.10.1</div></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+
+
+
+        <details open>
+            <summary>NeuVector</summary>
+            <div class="content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>NEUVECTOR</td>
+                            <td><div class="value-cell">v5.4.8</div></td>
+                        </tr>
+
+                        <tr>
+                            <td>NEUVECTOR_RANCHER_CHART</td>
+                            <td><div class="value-cell">108.0.1+up2.8.10</div></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+
+
+
+        <details open>
+            <summary>Elemental</summary>
+            <div class="content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>ELEMENTAL</td>
+                            <td><div class="value-cell">v2.3.0</div></td>
+                        </tr>
+
+                        <tr>
+                            <td>ELEMENTAL_RANCHER_IMAGES</td>
+                            <td><div class="value-cell">rancher/mirrored-elemental-operator:1.7.3
+registry.suse.com/rancher/elemental-channel/sl-micro:6.1-baremetal</div></td>
+                        </tr>
+
+                        <tr>
+                            <td>ELEMENTALCRD_RANCHER_APP</td>
+                            <td><div class="value-cell">1.7.3</div></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+
+
+
+        <details open>
+            <summary>Turtles</summary>
+            <div class="content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>TURTLES</td>
+                            <td><div class="value-cell">v0.25.2</div></td>
+                        </tr>
+
+                        <tr>
+                            <td>TURTLES_UPSTREAM_CHART</td>
+                            <td><div class="value-cell">0.25.2</div></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+
+
+
+        <details open>
+            <summary>Components</summary>
+            <div class="content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>NM_CONFIGURATOR</td>
+                            <td><div class="value-cell">v0.3.5</div></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+
     </main>
     <footer style="text-align: center; padding: 2rem; color: #666; font-size: 0.9rem;">
         <p>Generated automatically.</p>
