@@ -37,6 +37,16 @@ jobs:
     - name: Setup helm
       uses: azure/setup-helm@v4.2.0
 
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install jinja2
+
     - name: Run HTML table generation script
       run: ./generate-html-table.sh
 
