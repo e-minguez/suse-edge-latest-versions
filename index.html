@@ -184,29 +184,46 @@
             main {
                 padding: 1rem;
             }
-            th, td {
+
+            /* Hide the table header completely */
+            thead {
+                display: none;
+            }
+
+            table, tbody {
                 display: block;
                 width: 100%;
             }
-            th {
-                background-color: transparent;
-                padding-bottom: 0;
-                color: var(--suse-jungle-green);
-                font-size: 0.85rem;
-                text-transform: uppercase;
-                letter-spacing: 0.05em;
-            }
-            td {
-                padding-top: 5px;
-                border-bottom: 1px solid var(--border-color);
-            }
+
             tr {
                 border-bottom: 1px solid var(--border-color);
-                display: block;
+                display: flex;
+                flex-direction: column;
                 margin-bottom: 1rem;
+                padding-bottom: 0.5rem;
             }
             tr:last-child {
                 margin-bottom: 0;
+                border-bottom: none;
+            }
+
+            td {
+                display: block;
+                width: 100%;
+                border-bottom: none;
+                padding: 4px 0;
+            }
+
+            /* Key styling */
+            td:first-child {
+                font-weight: bold;
+                color: var(--suse-dark-green);
+                padding-bottom: 0;
+            }
+
+            /* Value styling */
+            td:last-child {
+                padding-top: 0;
             }
         }
     </style>
