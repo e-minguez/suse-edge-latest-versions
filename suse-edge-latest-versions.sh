@@ -84,7 +84,7 @@ NEUVECTOR_RANCHER_IMAGES=$(helm template http://charts.rancher.io/$(echo "${RANC
 TURTLES_CHARTS_INDEX=$(curl -s https://rancher.github.io/turtles/index.yaml)
 TURTLES_UPSTREAM_APP=$(echo "${TURTLES_CHARTS_INDEX}" | yq '.entries."rancher-turtles"[0].appVersion')
 TURTLES_UPSTREAM_CHART=$(echo "${TURTLES_CHARTS_INDEX}" | yq '.entries."rancher-turtles"[0].version')
-TURLTES_UPSTREAM_KUBE_REQUIRED=$(echo "${TURTLES_CHARTS_INDEX}" | yq '.entries."rancher-turtles"[0].kubeVersion')
+TURTLES_UPSTREAM_KUBE_REQUIRED=$(echo "${TURTLES_CHARTS_INDEX}" | yq '.entries."rancher-turtles"[0].kubeVersion')
 TURTLES_UPSTREAM_IMAGES=$(helm template $(echo "${TURTLES_CHARTS_INDEX}" | yq '.entries."rancher-turtles"[0].urls[0]') | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' | sort | uniq)
 
 # Elemental upstream using OCI
