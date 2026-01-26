@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUSE Edge Latest Versions</title>
+    <style>
+        :root {
+            --suse-dark-green: #0C322C;
+            --suse-jungle-green: #30BA78;
+            --suse-fog: #F0F2F4;
+            --text-color: #333;
+            --border-color: #ddd;
+        }
+        body {
+            font-family: "EoT", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: var(--text-color);
+        }
+        header {
+            background-color: var(--suse-dark-green);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo {
+            height: 40px;
+            margin-right: 20px;
+        }
+        .disclaimer {
+            font-size: 0.9rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--suse-jungle-green);
+        }
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        details {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        summary {
+            background-color: white;
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--suse-dark-green);
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--suse-jungle-green);
+        }
+        details[open] summary::after {
+            content: '-';
+        }
+        details[open] summary {
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--suse-fog);
+        }
+        .content {
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--suse-fog);
+            color: var(--suse-dark-green);
+            font-weight: 600;
+            width: 30%;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .value-cell {
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 200px;
+            overflow-y: auto;
+            display: block;
+        }
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .logo {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+            main {
+                padding: 1rem;
+            }
+            th, td {
+                display: block;
+                width: 100%;
+            }
+            th {
+                background-color: transparent;
+                padding-bottom: 0;
+                color: var(--suse-jungle-green);
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+            td {
+                padding-top: 5px;
+                border-bottom: 1px solid #eee;
+            }
+            tr {
+                border-bottom: 1px solid var(--border-color);
+                display: block;
+                margin-bottom: 1rem;
+            }
+            tr:last-child {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center;">
+            <img src="https://www.suse.com/siteassets/layout/suse-white-logo-green.svg" alt="SUSE Logo" class="logo">
+            <h1 style="margin: 0; font-size: 1.5rem;">Edge Latest Versions</h1>
+        </div>
+        <div class="disclaimer">
+            ⚠️ This is not official SUSE
+        </div>
+    </header>
+    <main>
+    {% for group_name in group_order %}
+        {% set items = grouped_data.get(group_name, {}) %}
+        {% if items %}
+        <details open>
+            <summary>{{ group_name }}</summary>
+            <div class="content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for key in items|sort %}
+                        <tr>
+                            <td>{{ key }}</td>
+                            <td><div class="value-cell">{{ items[key] }}</div></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </details>
+        {% endif %}
+    {% endfor %}
+    </main>
+    <footer style="text-align: center; padding: 2rem; color: #666; font-size: 0.9rem;">
+        <p>Generated automatically.</p>
+    </footer>
+</body>
+</html>
